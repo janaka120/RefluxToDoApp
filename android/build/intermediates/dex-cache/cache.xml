@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/pre-dexed/debug/classes-91ad212edb2fd4e054f242bb1e803260f9191993.jar" />
+    </item>
+    <item
+        jar="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-okhttp/0.8.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="0d5d69b03cb7d68b81543f6483ed04ccb0e2235b">
+        <dex dex="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/pre-dexed/debug/classes-f9bd1ee98c98f74859494b3bb00c378a4c6fab6a.jar" />
+    </item>
+    <item
+        jar="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/0.8.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="9178570a3a28c95fabd3bc746cd68efe99ad2b47">
+        <dex dex="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/pre-dexed/debug/classes-83cc3715ab556aa33f564bfb862d388750f128f1.jar" />
+    </item>
+    <item
+        jar="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4356e230a981d1bbf047d848b91bc0d9b7c5bacc">
+        <dex dex="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/pre-dexed/debug/classes-5b1bb345efc9aeed0cbc175452b9dc23a9b55aef.jar" />
+    </item>
+    <item
+        jar="/home/janaka/AndroidSDK/android-sdk-linux/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1-4d540f7120826d8a82805f85e34312fe0349ea6c.jar" />
+    </item>
+    <item
+        jar="/root/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.1.4/129874135e6081269ace2312092031558865de12/bolts-android-1.1.4.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="129874135e6081269ace2312092031558865de12">
+        <dex dex="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.4-78c0dd6d094fe25cf465ec3f63476789c87bb054.jar" />
+    </item>
+    <item
+        jar="/root/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp-ws/2.5.0/e9753b7dcae5deca92e871c5c759067070b07bc/okhttp-ws-2.5.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="0e9753b7dcae5deca92e871c5c759067070b07bc">
+        <dex dex="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/pre-dexed/debug/okhttp-ws-2.5.0-b5c5b3074e9b5325db9404c3ec6bc31fbacaeb19.jar" />
+    </item>
+    <item
+        jar="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/0.8.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="845a5b3a624946b2068963ba656c117fc453701c">
+        <dex dex="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/pre-dexed/debug/classes-0ccb8a7cdc11f1c2a377e41c7764d588abb9f0b8.jar" />
+    </item>
+    <item
+        jar="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/0.8.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4af24c040b21980e0a80a505816c648e36705bd9">
+        <dex dex="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/pre-dexed/debug/classes-94e799b40e75d9ce12cb3886f6eb98becee12b0a.jar" />
+    </item>
+    <item
+        jar="/root/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.5.0/4de2b4ed3445c37ec1720a7d214712e845a24636/okhttp-2.5.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4de2b4ed3445c37ec1720a7d214712e845a24636">
+        <dex dex="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/pre-dexed/debug/okhttp-2.5.0-f1e652853ecd9d2f8b650c913738285de6b149f5.jar" />
+    </item>
+    <item
+        jar="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.25.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5453085bfeee55acfa0235a5dc1477e9126013db">
+        <dex dex="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/pre-dexed/debug/classes-407180ab84151207803276fb45c943bb89561e25.jar" />
+    </item>
+    <item
+        jar="/root/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.0/5871fb60dc68d67da54a663c3fd636a10a532948/jsr305-3.0.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
+        <dex dex="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/pre-dexed/debug/jsr305-3.0.0-456beae1bfbef6196546d4c957b5e9b726c256ac.jar" />
+    </item>
+    <item
+        jar="/root/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.6.0/98476622f10715998eacf9240d6b479f12c66143/okio-1.6.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="98476622f10715998eacf9240d6b479f12c66143">
+        <dex dex="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/pre-dexed/debug/okio-1.6.0-abbb6cf6565e5391600f42e794cd7651128fa41b.jar" />
+    </item>
+    <item
+        jar="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1-efefe5eb0c6e5382b2aeb695817df12732fdba7b.jar" />
+    </item>
+    <item
+        jar="/root/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.2.3/1a0113da2cab5f4c216b4e5e7c1dbfaa67087e14/jackson-core-2.2.3.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1a0113da2cab5f4c216b4e5e7c1dbfaa67087e14">
+        <dex dex="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/pre-dexed/debug/jackson-core-2.2.3-a77e21376e97001389b272835eb25fdac07102f2.jar" />
+    </item>
+    <item
+        jar="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/pre-dexed/debug/classes-400ca1eb970a8a17a30f3d389cc6d8b56edcf0e5.jar" />
+    </item>
+    <item
+        jar="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/0.8.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3836ecca4e31e18ea8fbae8e822d49777b0db4f7">
+        <dex dex="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/pre-dexed/debug/classes-b31fafdb84fae0aa09bf8b7034e46ec7fcb40299.jar" />
+    </item>
+    <item
+        jar="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.25.1/jars/libs/infer-annotations-1.5.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="12b559f4bf81fa45adf2235efa0c2fbd9d933f1e">
+        <dex dex="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/pre-dexed/debug/infer-annotations-1.5-ef925eaf7239fd028c984460c160d74f51cc6c90.jar" />
+    </item>
+    <item
+        jar="/root/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="/home/janaka/my_projects/react_native/test_reflux/TODORefluxApp/android/app/build/intermediates/pre-dexed/debug/library-2.4.0-966625304e7208badec13abab7a99ab1be33bd6f.jar" />
+    </item>
+
+</items>
