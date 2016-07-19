@@ -14,6 +14,7 @@ export default class List extends Component {
 			noteID: '',
 			note: '',
 			buttonName: 'ADD',
+      length: 0,
 			notes: new ListView.DataSource({
 		    rowHasChanged: (r1, r2) => r1 != r2
 		  })
@@ -21,9 +22,10 @@ export default class List extends Component {
 	}
 
 	componentDidMount() {
-		this.unsubscribe = ListStore.listen((note)=>{
+		this.unsubscribe = ListStore.listen((notes)=>{
 			this.setState({
-		    notes: this.state.notes.cloneWithRows(note),
+        length: notes.length,
+		    notes: this.state.notes.cloneWithRows(notes),
 		    note: '',
 		    noteID: '',
 		    buttonName: 'ADD'
@@ -54,20 +56,20 @@ export default class List extends Component {
 
 	_onRemoveHandler(noteID){
 		Alert.alert(
-							'Delete Comfirmation Required',
-							'Are you sure you want to delete selected note?',
-							[{
-						    	text: 'OK', 
-						    	onPress: () => {
-						    		if (noteID){
-								  		ListAction.removeNote({
-								  			id : parseInt(noteID)
-								  		});
-  										return;
-  									}
-						    	}
-						  	}]
-						);	
+			'Delete Comfirmation Required',
+			'Are you sure you want to delete selected note?',
+			[{
+		    	text: 'OK', 
+		    	onPress: () => {
+		    		if (noteID){
+				  		ListAction.removeNote({
+				  			id : parseInt(noteID)
+				  		});
+							return;
+						}
+		    	}
+		  	}]
+		);	
 	}
 
   render() {
@@ -82,16 +84,34 @@ export default class List extends Component {
 	        placeholder={"Create your note"}
 	        onChangeText={(text) => this.setState({note: text})}
 	        value={this.state.note} />
-        <Button 
-	        text={this.state.buttonName}
-	        onpress={this._onPressHandler.bind(this)} 
-	        buttonStyles={styles.primaryButton} 
-	        buttonTextStyles={styles.primaryButtonText} />
+        <View style={{flexDirection: 'row'}}>
+          <Button 
+  	        text={this.state.buttonName}
+  	        onpress={this._onPressHandler.bind(this)} 
+  	        buttonStyles={styles.primaryButtonAdd} 
+  	        buttonTextStyles={styles.primaryButtonText} />
+          <Button 
+            text= 'Cancel'
+            onpress={this._onClearHandler.bind(this)} 
+            buttonStyles={styles.primaryButtonCancel} 
+            buttonTextStyles={styles.primaryButtonText} />
+        </View>
         <Text style={styles.listTitle}>My Notes</Text>
-        <ListView
- 	        dataSource = {this.state.notes}
-	        renderRow = {this.renderRow.bind(this)}>
-			  </ListView>
+        {(() => {
+                  if (this.state.length > 0) {
+                    return (
+                      <ListView
+                        dataSource = {this.state.notes}
+                        renderRow = {this.renderRow.bind(this)}>
+                      </ListView>
+                    );
+                  }else{
+                    return(
+                    <Text style={styles.listEmpty}>You have not any Notes.</Text>
+                    );
+                  }
+                })
+        ()}
   		</View>   		
     );
   }
@@ -108,6 +128,14 @@ export default class List extends Component {
 	  	ListAction.createNote(this.state.note);
 	  }
   }
+
+  _onClearHandler(){
+    this.setState({
+        note: '',
+        noteID: '',
+        buttonName: 'ADD'
+      });
+  }
 }
 
 const styles = StyleSheet.create({
@@ -123,19 +151,33 @@ const styles = StyleSheet.create({
     marginRight: 20,
     fontSize: 20
   },
-  primaryButton: {
+  primaryButtonAdd: {
+    width: 350,
+    height: 55,
     margin: 20,
+    marginRight: 10,
     padding: 10,
     backgroundColor: '#529ecc',
     marginTop: 5
   },
+  primaryButtonCancel: {
+    width: 350,
+    height: 55,
+    margin: 20,
+    marginRight: 10,
+    padding: 10,
+    backgroundColor: '#ff0000',
+    marginTop: 5
+  },
   primaryButtonText: {
+    width: 100,
+    height: 55,
     color: '#FFF',
     fontSize: 24,
     textAlign: 'center'
   },
   appTitle: {
-  	fontSize: 23,
+  	fontSize: 25,
   	marginTop:20,
   	marginLeft: 20,
     marginRight: 20,
@@ -163,6 +205,11 @@ const styles = StyleSheet.create({
   	backgroundColor:"#ff1a1a",
   	marginLeft: 8,
   	marginBottom:10
+  },
+  listEmpty: {
+    fontSize: 30,
+    marginTop: 40,
+    textAlign: 'center'
   }
 });
 
