@@ -14,7 +14,7 @@ export default class button extends Component {
   render(){
     return (
       <TouchableHighlight underlayColor={"#E8E8E8"} onPress={this.props.onpress} style={this.props.buttonStyles}>
-        <View style={{flex: 1, flexDirection: 'row'}}>
+        <View style={{flexDirection: 'row'}}>
           <Text style={this.props.buttonTextStyles}>{this.props.text}</Text>
         </View>
       </TouchableHighlight>

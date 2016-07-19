@@ -14,22 +14,25 @@ export default class List extends Component {
 			noteID: '',
 			note: '',
 			buttonName: 'ADD',
-      length: 0,
-			notes: new ListView.DataSource({
-		    rowHasChanged: (r1, r2) => r1 != r2
-		  })
+      length: 0
 		};
 	}
 
 	componentDidMount() {
 		this.unsubscribe = ListStore.listen((notes)=>{
-			this.setState({
+      this.setState({
+        notes: new ListView.DataSource({
+          rowHasChanged: (r1, r2) => r1 != r2
+        })
+      }, () => {
+        this.setState({
         length: notes.length,
-		    notes: this.state.notes.cloneWithRows(notes),
-		    note: '',
-		    noteID: '',
-		    buttonName: 'ADD'
-	    });
+        notes: this.state.notes.cloneWithRows(notes),
+        note: '',
+        noteID: '',
+        buttonName: 'ADD'
+        });
+      });		
 		});	
 	}
 
@@ -39,7 +42,7 @@ export default class List extends Component {
 
 	renderRow(rowData, sectionID, rowID, highlightRow){
     return (
-      <View style={{flex: 1, flexDirection: 'row'}}>
+      <View style={{flexDirection: 'row'}}>
         <Text style={styles.listItemText} >{rowData}</Text>
         <Icon name="pencil" onPress= {this._onEditHandler.bind(this, rowID, rowData)} style={styles.listEditIcon}></Icon>
         <Icon name="eraser" onPress= {this._onRemoveHandler.bind(this, rowID)} style={styles.listRemoveIcon}></Icon>
@@ -49,7 +52,7 @@ export default class List extends Component {
 
 	_onEditHandler(noteID, note){
 		this.setState({
-			buttonName: 'EDIT',
+			buttonName: 'Update',
 			note : note,
 			noteID: noteID});
 	}
@@ -81,7 +84,7 @@ export default class List extends Component {
 	        </Text>
         <TextInput
 	        style={styles.textInput}
-	        placeholder={"Create your note"}
+	        placeholder={"Create your note here"}
 	        onChangeText={(text) => this.setState({note: text})}
 	        value={this.state.note} />
         <View style={{flexDirection: 'row'}}>
@@ -107,7 +110,7 @@ export default class List extends Component {
                     );
                   }else{
                     return(
-                    <Text style={styles.listEmpty}>You have not any Notes.</Text>
+                      <Text style={styles.listEmpty}>You don't have any Notes.</Text>
                     );
                   }
                 })
@@ -140,7 +143,7 @@ export default class List extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   textInput: {
     height: 40, 
@@ -149,7 +152,7 @@ const styles = StyleSheet.create({
     margin:10,
     marginLeft: 20,
     marginRight: 20,
-    fontSize: 20
+    fontSize: 23
   },
   primaryButtonAdd: {
     width: 350,
@@ -177,19 +180,19 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   appTitle: {
-  	fontSize: 25,
+  	fontSize: 28,
   	marginTop:20,
   	marginLeft: 20,
     marginRight: 20,
     textAlign: 'center'
   },
   listTitle: {
-  	fontSize: 20,
+  	fontSize: 25,
   	marginLeft: 20,
   	marginBottom: 15
   },
   listItemText: {
-  	fontSize: 22,
+  	fontSize: 23,
   	width: 600,
   	marginLeft: 30,
   	marginBottom: 10
