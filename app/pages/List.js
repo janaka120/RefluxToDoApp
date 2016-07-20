@@ -75,7 +75,10 @@ export default class List extends Component {
 							return;
 						}
 		    	}
-		  	}]
+		  	},
+        {
+          text: 'Cancel'
+        }]
 		);	
 	}
 
