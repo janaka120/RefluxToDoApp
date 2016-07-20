@@ -13,8 +13,10 @@ export default class List extends Component {
 		this.state = {
 			noteID: '',
 			note: '',
-			buttonName: 'ADD',
-      length: 0
+			createButName: 'ADD',
+      length: 0, // notes array lenth
+      cancelBtnName: 'Clear',
+      addBtnStyle: styles.defaultPrimaryButtonAdd
 		};
 	}
 
@@ -30,7 +32,7 @@ export default class List extends Component {
         notes: this.state.notes.cloneWithRows(notes),
         note: '',
         noteID: '',
-        buttonName: 'ADD'
+        createButName: 'ADD'
         });
       });		
 		});	
@@ -44,15 +46,17 @@ export default class List extends Component {
     return (
       <View style={{flexDirection: 'row'}}>
         <Text style={styles.listItemText} >{rowData}</Text>
-        <Icon name="pencil" onPress= {this._onEditHandler.bind(this, rowID, rowData)} style={styles.listEditIcon}></Icon>
-        <Icon name="eraser" onPress= {this._onRemoveHandler.bind(this, rowID)} style={styles.listRemoveIcon}></Icon>
+        <Icon name="pencil-square-o" onPress= {this._onEditHandler.bind(this, rowID, rowData)} style={styles.listEditIcon}></Icon>
+        <Icon name="trash-o" onPress= {this._onRemoveHandler.bind(this, rowID)} style={styles.listRemoveIcon}></Icon>
       </View>
     );
 	}
 
 	_onEditHandler(noteID, note){
 		this.setState({
-			buttonName: 'Update',
+			createButName: 'Update',
+      cancelBtnName: 'Cancel',
+      addBtnStyle: styles.primaryButtonAdd,
 			note : note,
 			noteID: noteID});
 	}
@@ -85,19 +89,26 @@ export default class List extends Component {
         <TextInput
 	        style={styles.textInput}
 	        placeholder={"Create your note here"}
-	        onChangeText={(text) => this.setState({note: text})}
+	        onChangeText={(text) => this.setState({note: text, addBtnStyle: styles.primaryButtonAdd})}
 	        value={this.state.note} />
         <View style={{flexDirection: 'row'}}>
           <Button 
-  	        text={this.state.buttonName}
+  	        text={this.state.createButName}
   	        onpress={this._onPressHandler.bind(this)} 
-  	        buttonStyles={styles.primaryButtonAdd} 
+  	        buttonStyles={(this.state.note === '') ? styles.defaultPrimaryButtonAdd : this.state.addBtnStyle} 
   	        buttonTextStyles={styles.primaryButtonText} />
-          <Button 
-            text= 'Cancel'
-            onpress={this._onClearHandler.bind(this)} 
-            buttonStyles={styles.primaryButtonCancel} 
-            buttonTextStyles={styles.primaryButtonText} />
+          { (() => {
+                  if (this.state.cancelBtnName === 'Update' || this.state.note !== '') {
+                    return (
+                      <Button 
+                        text= {this.state.cancelBtnName}
+                        onpress={this._onClearHandler.bind(this)} 
+                        buttonStyles={styles.primaryButtonCancel} 
+                        buttonTextStyles={styles.primaryButtonText} />
+                    );
+                  }
+                })
+        () }
         </View>
         <Text style={styles.listTitle}>My Notes</Text>
         {(() => {
@@ -136,7 +147,9 @@ export default class List extends Component {
     this.setState({
         note: '',
         noteID: '',
-        buttonName: 'ADD'
+        createButName: 'ADD',
+        cancelBtnName: 'Clear',
+        addBtnStyle: styles.defaultPrimaryButtonAdd
       });
   }
 }
@@ -153,6 +166,15 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
     fontSize: 23
+  },
+  defaultPrimaryButtonAdd: {
+    width: 725,
+    height: 55,
+    margin: 20,
+    marginRight: 10,
+    padding: 10,
+    backgroundColor: '#529ecc',
+    marginTop: 5
   },
   primaryButtonAdd: {
     width: 350,
@@ -173,7 +195,8 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
   primaryButtonText: {
-    width: 100,
+    // width: 100,
+    flex: 1,
     height: 55,
     color: '#FFF',
     fontSize: 24,
@@ -192,22 +215,22 @@ const styles = StyleSheet.create({
   	marginBottom: 15
   },
   listItemText: {
-  	fontSize: 23,
+  	fontSize: 24,
   	width: 600,
   	marginLeft: 30,
   	marginBottom: 10
   },
   listEditIcon: {
-  	width: 25,
-  	backgroundColor:"#3b5998",
+  	width: 30,
   	marginRight: 8,
-  	marginBottom:10
+  	marginBottom:10,
+    fontSize: 30
   },
   listRemoveIcon: {
   	width: 25,
-  	backgroundColor:"#ff1a1a",
   	marginLeft: 8,
-  	marginBottom:10
+  	marginBottom:10,
+    fontSize: 30
   },
   listEmpty: {
     fontSize: 30,
