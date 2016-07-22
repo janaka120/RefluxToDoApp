@@ -1,56 +1,50 @@
 var Reflux = require('reflux');
 var ListAction = require('../Actions/ListAction');
 
-var notes = []; //This is private note array
-
-
 export default Reflux.createStore({
   
+  data: {
+    notes: []
+  },
+
   init: function() {
     // Here we listen to actions and register callbacks
     this.listenTo(ListAction.createNote, this.onCreate);
     this.listenTo(ListAction.updateNote, this.onUpdate);
     this.listenTo(ListAction.removeNote, this.onRemove);
   },
+
+  emitChange() {
+    this.trigger(this.data.notes.slice());
+  },
+  
+  load: function() {
+    this.emitChange();
+  },
+  
   onCreate: function(note) {
-    notes.push(note); //create a new note
-    // Trigger an event once done so that our components can update. Also pass the modified list of notes.
-    this.trigger(notes);
+    this.data.notes.push(note); //create a new note
+    // Trigger an event once done so that our components can update. Also pass the modified list of this.data.notes.
+    this.emitChange();
   },
 
   //getter for notes
   getnotes: function() {
-    return notes;
+    return this.data.notes;
   },
 
   //getter for finding a single note by id
   getnote: function(id) {
-    for (var i = 0; i < notes.length; i++) {
-      if(notes[i]._id === id) {
-        return notes[i];
-      }
-    }    
+    return this.data.notes[id];  
   },
 
   onUpdate: function(data){
-    for (var i = notes.length - 1; i >= 0; i--) {
-      if(data.id === i){
-        notes[i] = data.note;
-        this.trigger(notes);
-        break;
-      }
-    }
+    this.data.notes[data.id] = data.note;
+    this.emitChange();
   },
 
   onRemove: function(data){
-    for (var i = notes.length - 1; i >= 0; i--) {
-      if(data.id === i){
-        notes.splice(i, 1);
-        this.trigger(notes);
-        break;
-      }
-    }
+    this.data.notes.splice(data.id, 1);
+    this.emitChange();
   }
 });
-
-// module.exports = ListStore; //Finally, export the Store
