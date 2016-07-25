@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { AppRegistry, View, TextInput, StyleSheet, Text, ListView, TouchableOpacity, Alert } from 'react-native';
 import ListStore from '../Stores/ListStore';
-import ListAction from '../Actions/ListAction';
+import ListAction from '../Actions/ListActions';
 import DeleteButton from '../components/List/DeleteButton';
 import EditButton from '../components/List/EditButton';
+// var createFragment = require('react-addons-create-fragment');
 
 export default class List extends Component {
 
@@ -21,6 +22,13 @@ export default class List extends Component {
 	componentDidMount() {
 
     this.unsubscribe = ListStore.listen((notes)=>{
+
+      // notes=notes.map((noteObj) => {
+      //         return {
+      //           id: noteObj.id,
+      //           note: noteObj.note
+      //         }
+      //       });
       this.setState({
           length: notes.length,
           notes: this.state.notes.cloneWithRows(notes)
@@ -39,7 +47,7 @@ export default class List extends Component {
       <View style={styles.container}>
         <Text style={styles.text}>{rowData}</Text>
         <EditButton onPress={this._handleOnEdit.bind(this,rowID)} />
-        <DeleteButton onPress={this._handleOnRemove.bind(this,rowID)} />
+        <DeleteButton onPress={this._handleOnRemove.bind(this,rowID,rowData)} />
       </View>
     );
 	}
@@ -48,9 +56,10 @@ export default class List extends Component {
     this.props.onEditNote(noteId, ListStore.getnote(noteId));
   }
 
-  _handleOnRemove(noteId){
+  _handleOnRemove(noteId, note){
     ListAction.removeNote({
-      id : parseInt(noteId)
+      id : parseInt(noteId),
+      note: note
     });
   }
 
