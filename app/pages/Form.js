@@ -3,7 +3,7 @@ import { View, TextInput, StyleSheet, Text } from 'react-native';
 import CreateButton from '../components/Form/CreateButton';
 import CancelButton from '../components/Form/CancelButton';
 import ListStore from '../Stores/ListStore';
-import ListAction from '../Actions/ListAction';
+import ListAction from '../Actions/ListActions';
 
 export default class List extends Component {
 
@@ -73,24 +73,22 @@ export default class List extends Component {
   }
 
   _handleOnSave(){
-    console.log("sadsdasdsadsadsad");
     if (this.state.note !== ''){
       if (this.state.noteId !== ''){
         ListAction.updateNote({
-          id : parseInt(this.state.noteId),
+          id : this.state.noteId,
           note: this.state.note
         });
         return;
       }
-      
-      ListAction.createNote(this.state.note);
+      ListAction.createNote({note: this.state.note});
     }
   }
 
-  editNote(noteId, note){
+  editNote(noteObj){
     this.setState({ 
-      noteId,
-      note
+      noteId : noteObj.id,
+      note : noteObj.note
     });
   }
 }

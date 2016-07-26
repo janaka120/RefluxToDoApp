@@ -14,7 +14,7 @@ export default class App extends Component {
         return (
         	<View>
         		<Form ref='form'/>
-        		<List onEditNote={(noteId, text) => this.refs.form.editNote(noteId, text)}/>
+        		<List onEditNote={(noteObj) => this.refs.form.editNote(noteObj)}/>
         	</View>
     	);
     }

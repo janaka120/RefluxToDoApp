@@ -1,5 +1,5 @@
 var Reflux = require('reflux');
-var ListAction = require('../Actions/ListAction');
+var ListActions = require('../Actions/ListActions');
 
 export default Reflux.createStore({
   
@@ -7,11 +7,9 @@ export default Reflux.createStore({
     notes: []
   },
 
+  listenables: ListActions,
+
   init: function() {
-    // Here we listen to actions and register callbacks
-    this.listenTo(ListAction.createNote, this.onCreate);
-    this.listenTo(ListAction.updateNote, this.onUpdate);
-    this.listenTo(ListAction.removeNote, this.onRemove);
   },
 
   emitChange() {
@@ -21,30 +19,65 @@ export default Reflux.createStore({
   load: function() {
     this.emitChange();
   },
-  
-  onCreate: function(note) {
-    this.data.notes.push(note); //create a new note
-    // Trigger an event once done so that our components can update. Also pass the modified list of this.data.notes.
+
+  showMessage(msg){
+    alert(msg);
+  },
+
+  onCreateNoteCompleted: function(data) {
+    this.data.notes.push(data);
+    this.showMessage("Sucessfully create note.");
+    this.emitChange();
+  },
+  onCreateNoteFailed: function(error) {
+    this.showMessage(error);
+    this.emitChange();
+  },
+  onUpdateNoteCompleted: function(data) {
+
+    this.data.notes.forEach( (noteObj) => {
+      if (noteObj.id == data.id){
+        noteObj.note = data.note;
+        this.showMessage("Sucessfully update note.");
+        this.emitChange();
+        return;
+      }
+    });
+  },
+
+  onUpdateNoteFailed: function(error) {
+    this.showMessage(error);
     this.emitChange();
   },
 
-  //getter for notes
+  onRemoveNoteCompleted: function(data) {
+    this.data.notes.forEach((noteObj => {
+      if (noteObj.id == data.id){
+        this.data.notes.splice(data.id, 1);
+        this.showMessage("Sucessfully remove note.");
+        this.emitChange();
+        return;
+      }
+    }));
+  },
+
+  onRemoveNoteFailed: function(error) {
+    this.showMessage(error);
+    this.emitChange();
+  },
+
   getnotes: function() {
     return this.data.notes;
   },
 
-  //getter for finding a single note by id
   getnote: function(id) {
-    return this.data.notes[id];  
-  },
-
-  onUpdate: function(data){
-    this.data.notes[data.id] = data.note;
-    this.emitChange();
-  },
-
-  onRemove: function(data){
-    this.data.notes.splice(data.id, 1);
-    this.emitChange();
+    let note = {};
+    this.data.notes.forEach((noteObj) => {
+      if (noteObj.id == id) {
+        note = noteObj;
+        return note;
+      }
+    });
+    return note;
   }
 });
