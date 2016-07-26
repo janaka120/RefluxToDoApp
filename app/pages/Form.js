@@ -76,20 +76,19 @@ export default class List extends Component {
     if (this.state.note !== ''){
       if (this.state.noteId !== ''){
         ListAction.updateNote({
-          id : parseInt(this.state.noteId),
+          id : this.state.noteId,
           note: this.state.note
         });
         return;
       }
-      // ListAction.createNote({note: this.state.note});
-      ListAction.createNote(this.state.note);
+      ListAction.createNote({note: this.state.note});
     }
   }
 
-  editNote(noteId, note){
+  editNote(noteObj){
     this.setState({ 
-      noteId,
-      note
+      noteId : noteObj.id,
+      note : noteObj.note
     });
   }
 }

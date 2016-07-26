@@ -1,7 +1,5 @@
 var Reflux = require('reflux');
 var ListActions = require('../Actions/ListActions');
-// var Firebase = require('firebase');
-// var myFirebaseRef;
 
 export default Reflux.createStore({
   
@@ -22,42 +20,64 @@ export default Reflux.createStore({
     this.emitChange();
   },
 
-  showError(error){
-    alert(error);
+  showMessage(msg){
+    alert(msg);
   },
 
   onCreateNoteCompleted: function(data) {
     this.data.notes.push(data);
+    this.showMessage("Sucessfully create note.");
     this.emitChange();
   },
   onCreateNoteFailed: function(error) {
-    this.showError(error);
+    this.showMessage(error);
     this.emitChange();
   },
   onUpdateNoteCompleted: function(data) {
-    this.data.notes[data.id] = data.note;
-    this.emitChange();
+
+    this.data.notes.forEach( (noteObj) => {
+      if (noteObj.id == data.id){
+        noteObj.note = data.note;
+        this.showMessage("Sucessfully update note.");
+        this.emitChange();
+        return;
+      }
+    });
   },
+
   onUpdateNoteFailed: function(error) {
-    this.showError(error);
-    this.emitChange();
-  },
-  onRemoveNoteCompleted: function(data) {
-    this.data.notes.splice(data.id, 1);
-    this.emitChange();
-  },
-  onRemoveNoteFailed: function(error) {
-    this.showError(error);
+    this.showMessage(error);
     this.emitChange();
   },
 
-  //getter for notes
+  onRemoveNoteCompleted: function(data) {
+    this.data.notes.forEach((noteObj => {
+      if (noteObj.id == data.id){
+        this.data.notes.splice(data.id, 1);
+        this.showMessage("Sucessfully remove note.");
+        this.emitChange();
+        return;
+      }
+    }));
+  },
+
+  onRemoveNoteFailed: function(error) {
+    this.showMessage(error);
+    this.emitChange();
+  },
+
   getnotes: function() {
     return this.data.notes;
   },
 
-  //getter for finding a single note by id
   getnote: function(id) {
-    return this.data.notes[id];  
+    let note = {};
+    this.data.notes.forEach((noteObj) => {
+      if (noteObj.id == id) {
+        note = noteObj;
+        return note;
+      }
+    });
+    return note;
   }
 });
