@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "rm -rf ./node_modules/jest-cli/.haste_cache && jest"
   },
   "dependencies": {
     "firebase": "^2.4.2",
@@ -13,5 +14,28 @@
     "react-native-cli": "^1.0.0",
     "react-native-vector-icons": "^2.0.3",
     "reflux": "^0.3.0"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "testFileExtensions": [
+      "es6",
+      "js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "es6"
+    ],
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/fbjs"
+    ],
+    "verbose": true,
+    "collectCoverage": true
+  },
+  "devDependencies": {
+    "babel-jest": "^6.0.1",
+    "jest-cli": "^0.8.2",
+    "react-addons-test-utils": "^0.14.6"
   }
 }
